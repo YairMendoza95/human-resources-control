@@ -6,10 +6,10 @@ Esta es una plicación basadaen MEAN Stack para controlar las entradas y salidas
 
 No olvidar instalar las dependencias:
 
-...
+```
 cd api/
-...
+```
 
-...
+```
 npm install
-...
+```
