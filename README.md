@@ -4,7 +4,7 @@ Esta es una plicación basadaen MEAN Stack para controlar las entradas y salidas
 
 ### Notas:
 
-No olvidar instalar las dependencias:
+No olvidar instalar las dependencias del backend:
 
 ```
 cd api/
