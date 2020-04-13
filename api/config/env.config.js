@@ -1,9 +1,9 @@
-export default env = {
-    development: {
-        PORT: 8000,
-        HOST: `http://localhost:${PORT}`,
-    },
-    production: {
+// ============================================================
+//                          Puerto
+// ============================================================
+proces.env.PORT = process.env.PORT || 3000;
 
-    }
-}
+// ============================================================
+//                            Host
+// ============================================================
+process.env.HOST = process.env.HOST || `http://localhost:${process.env.PORT}`;

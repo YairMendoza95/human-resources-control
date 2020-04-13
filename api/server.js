@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const app = express();
 
 const corsOptions = {
-    origin: ,
+    origin: process.env.HOST,
 };
 
 app.use(cors(corsOptions));
