@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="container">
+        <h2 class="text-center">Tipos de certificaciones</h2>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Buscar" aria-label="Recipient's username"
+          aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button" id="button-addon2">Buscar</button>
+        </div>
+      </div>
+      <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripción</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let type of types; let i=index;">
+              <td scope="row">{{i+1}}</td>
+              <td>{{type.type_name}}</td>
+              <td>{{type.type_description}}</td>
+              <td>
+                <!-- Button trigger modal -->
+                <button id="ver" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                  [attr.data-target]="'#exampleModal'+type.id" (click)="getType(type.id)">
+                  Ver
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{type.id}}" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <form #dataForm="ngForm" (ngSubmit)="updateType(type.id)">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h2 class="modal-title" id="exampleModalLabel">Nuevo tipo de certificación</h2>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group">
+                            <label for="">Tipo de certificación</label>
+                            <input type="text" class="form-control" name="type_name"
+                              [(ngModel)]="currentType.type_name">
+                          </div>
+                          <div class="form-group">
+                            <label for="">Descripción</label>
+                            <input type="text" class="form-control" name="type_description"
+                              [(ngModel)]="currentType.type_description">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="container">
+        <button class="btn btn-block btn-outline-primary" type="button" data-toggle="modal"
+          [attr.data-target]="'#example'">Agregar</button>
+
+        <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <form #dataForm="ngForm" (ngSubmit)="addType()">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar certificación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="">Tipo de certificación</label>
+                    <input type="text" class="form-control" name="type_name" [(ngModel)]="type.type_name">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Descripción</label>
+                    <input type="text" class="form-control" name="type_description" [(ngModel)]="type.type_description">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

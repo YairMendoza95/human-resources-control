@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="container">
+        <h1 class="text-center">Lista de certificaciones</h1>
+      </div>
+      
+      <div class="input-group mb-3 center">
+        <input type="text" class="form-control" placeholder="Buscar" aria-label="Recipient's username"
+          aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="button" id="button-addon2">Buscar</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">País</th>
+              <th scope="col">Versión</th>
+              <th scope="col">Descripción</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let certification of certifications; let i=index;">
+              <td scope="row">{{i+1}}</td>
+              <td>{{certification.certification_name}}</td>
+              <td>{{certification.certification_type}}</td>
+              <td>{{certification.certification_country}}</td>
+              <td>{{certification.certification_version}}</td>
+              <td>{{certification.certification_description}}</td>
+              <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                  [attr.data-target]="'#exampleModal'+certification.idcertification">
+                  Ver
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{certification.idcertification}}" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <form #dataForm="ngForm" (ngSubmit)="updateCertification(certification.idcertification)">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <h2 class="modal-title" id="exampleModalLabel">Editar certificación</h2>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+
+                        <div class="modal-body">
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Nombre de la certificación:</label>
+                            <input type="text" class="form-control" name="certification_name"
+                              [(ngModel)]="certification.certification_name"
+                              placeholder="Nombre">
+                          </div>
+
+                          <div class="form-row">
+                            <div class="form-group col-md-5">
+                              <label for=""> Tipo de certificación:</label>
+                              <select class="form-control" name="idtype_certification"
+                                [(ngModel)]="certification.idtype_certification">
+                                <option value="" selected>Seleccionar</option>
+                                <option *ngFor="let type of types;" value="{{type.id}}">{{type.type_name}}</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group col-md-5">
+                              <label for="">País:</label>
+                              <select class="form-control" name="certification_country"
+                                [(ngModel)]="certification.certification_country">
+                                <option value="" selected>Elige el país</option>
+                                <option *ngFor="let country of countries;" value="{{country}}">{{country}}</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group col-md-2">
+                              <label for="">Verisón:</label>
+                              <input class="form-control" name="certification_version"
+                                [(ngModel)]="certification.certification_version" type="text" placeholder="v1.0">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="">Descripción:</label>
+                            <textarea class="form-control" name="certification_description" rows="3"
+                              [(ngModel)]="certification.certification_description"
+                              placeholder="Escribe una descripción de la certificación -Opcional-"></textarea>
+                          </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-success">Guardar</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="container text-center">
+        <a routerLink="add" class="btn btn-block btn-outline-primary">Agregar</a>
+      </div>
+    </div>
+  </div>
+</div>

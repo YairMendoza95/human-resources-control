@@ -2,7 +2,7 @@
     "development": {
         "username": "controlempleados",
         "password": "Jymz.13021109",
-        "database": "hrcontrol_development",
+        "database": "hr_control",
         "host": "127.0.0.1",
         "dialect": "mysql",
         "define": {

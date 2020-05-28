@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header text-center">
+          <h1>Nueva certificación</h1>
+        </div>
+        <div class="card-body">
+          <form #dataForm="ngForm" (ngSubmit)="addCertification()">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Nombre de la certificación:</label>
+              <input type="text" class="form-control" name="certification_name"
+              [(ngModel)]="certification.certification_name" id="certification_name"
+                placeholder="Nombre" >
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for=""> Tipo de certificación:</label>
+                <select class="form-control" name="idtype_certification" [(ngModel)]="certification.idtype_certification" id="idtype_certification">
+                  <option value="" selected>Seleccionar</option>
+                  <option *ngFor="let type of types;" value="{{type.id}}">{{type.type_name}}</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-5">
+                <label for="">País:</label>
+                <select class="form-control" name="certification_country" [(ngModel)]="certification.certification_country" id="certification_country">
+                  <option value="" selected>Elige el país</option>
+                  <option *ngFor="let country of countries;" value="{{country}}">{{country}}</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="">Verisón:</label>
+                <input class="form-control" name="certification_version" id="certification_version" [(ngModel)]="certification.certification_version" type="text" placeholder="v1.0">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="">Descripción:</label>
+              <textarea class="form-control" name="certification_description" id="certification_description" rows="3"
+              [(ngModel)]="certification.certification_description"
+              placeholder="Escribe una descripción de la certificación -Opcional-"></textarea>
+            </div>
+
+            <div class="form-group text-center">
+              <button class="btn btn-outline-success col-md-4" type="submit">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
